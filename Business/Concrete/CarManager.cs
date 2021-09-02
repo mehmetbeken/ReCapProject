@@ -18,7 +18,14 @@ namespace Business.Concrete
 
         public void Add(Car car)
         {
-            _carDal.Add(car);
+            if (car.Description.Length>=2 && car.DailyPrice>0)
+            {
+                _carDal.Add(car);
+            }
+            else
+            {
+                System.Console.WriteLine("Araba isminin uzunluğu 2'den büyük veya günlük ücret 0'dan büyük olmalı");
+            }
         }
 
         public void Delete(Car car)
@@ -31,9 +38,14 @@ namespace Business.Concrete
             return _carDal.GetAll();
         }
 
-        public Car GetById(int Id)
+        public List<Car> GetCarsByBrandId(int brandId)
         {
-           return _carDal.GetById(Id);
+            return _carDal.GetAll(p => p.BrandId == brandId);
+        }
+
+        public List<Car> GetCarsByColorId(int colorId)
+        {
+            return _carDal.GetAll(p => p.ColorId == colorId);
         }
 
         public void Update(Car car)

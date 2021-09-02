@@ -1,5 +1,6 @@
 ﻿using Business.Abstract;
 using Business.Concrete;
+using DataAccess.Concrete.EntityFramework;
 using DataAccess.Concrete.InMemory;
 using Entities.Concrete;
 using System;
@@ -10,21 +11,20 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            CarManager carManager= new CarManager(new InMemoryCarDal());
 
-            carManager.Add(new Car { Id = 7, BrandId = 3, ColorId = 3, DailyPrice = 3500, Description = "Beautiful", ModelYear = 2020 });
-            
-            carManager.Delete(new Car { Id = 1 });
+            CarManager carManager = new CarManager(new EfCarDal());
+            carManager.Add(new Car { ModelYear = 2020, DailyPrice = 10000, Description = "Fast",ColorId=1,BrandId=1 });
 
-            carManager.Update(new Car { Id = 7, BrandId = 3, ColorId = 3, DailyPrice = 3500, Description = "Kind", ModelYear = 2020 });
-
+           
             foreach (var car in carManager.GetAll())
             {
                 System.Console.WriteLine(car.Description);
             }
 
-            System.Console.WriteLine(carManager.GetById(7).Description);
           
+
+
         }
+   
     }
 }
