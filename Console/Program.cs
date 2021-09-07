@@ -11,15 +11,47 @@ namespace Console
     {
         static void Main(string[] args)
         {
-            // CarAdded();
+            //CarAdded();
             //ColorAdded();
+            //GetCarDetails();
+            //CarAddedd();
 
+        }
+
+        private static void CarAddedd()
+        {
             CarManager carManager = new CarManager(new EfCarDal());
-            foreach (var car in carManager.GetCarDetails())
-            {
-                System.Console.WriteLine(car.Description + "\n" + car.BrandName + "\n" + car.ColorName + "\n" + car.DailyPrice);
-            }
 
+            var result = carManager.Add(new Car { BrandId = 2, ColorId = 2, ModelYear = 2021, DailyPrice = 20000, Description = "m" });
+
+            if (result.Success)
+            {
+                System.Console.WriteLine(result.Message);
+            }
+            else
+            {
+                System.Console.WriteLine(result.Message);
+            }
+        }
+
+        private static void GetCarDetails()
+        {
+            CarManager carManager = new CarManager(new EfCarDal());
+
+            var result = carManager.GetCarDetails();
+
+            if (result.Success)
+            {
+                foreach (var car in result.Data)
+                {
+                    System.Console.WriteLine(car.Description + "\n" + car.BrandName + "\n" + car.ColorName + "\n" + car.DailyPrice);
+                }
+
+            }
+            else
+            {
+                System.Console.WriteLine(result.Message);
+            }
         }
 
         private static void ColorAdded()
