@@ -43,6 +43,11 @@ namespace Business.Constants
         public static string RentalUpdated = "Kiralama Güncellendi";
         public static string RentalIsNotAvailable = "Kiralama Mevcut Değil";
 
+        public static string ImageLimitExceded = "Bir Araç İçin En Fazla 5 Fotoğraf Olabilir.";
+        public static string ImageUpdated = "Araç Resmi Güncellendi";
+        public static string ImageDeleted = "Araç Resmi Silindi";
+        public static string ImageAdded = "Araç Resmi Eklendi";
+
 
         public static string MaintenanceTime = "Sistem Bakımda";
 
